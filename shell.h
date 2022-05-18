@@ -1,82 +1,77 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
-#include <limits.h>
-#include <signal.h>
+#include "shell.h"
 
 /**
- * struct variables - variables
- * @av: command line arguments
- * @buffer: buffer of command
- * @env: environment variables
- * @count: count of commands entered
- * @argv: arguments at opening of shell
- * @status: exit status
- * @commands: commands to execute
+ * print_error - prints error messages to standard error
+ * @vars: pointer to struct of variables
+ * @msg: message to print
+ *
+ * Return: void
  */
-typedef struct variables
+void print_error(vars_t *vars, char *msg)
 {
-char **av;
-char *buffer;
-char **env;
-size_t count;
-char **argv;
-int status;
-char **commands;
-} vars_t;
+char *count;
+
+_puts2(vars->argv[0]);
+_puts2(": ");
+count = _uitoa(vars->count);
+_puts2(count);
+free(count);
+_puts2(": ");
+_puts2(vars->av[0]);
+if (msg)
+{
+_puts2(msg);
+}
+else
+perror("");
+}
 
 /**
- * struct builtins - struct for the builtin functions
- * @name: name of builtin command
- * @f: function for corresponding builtin
+ * _puts2 - prints a string to standard error
+ * @str: string to print
+ *
+ * Return void
+ *
  */
-typedef struct builtins
+
+void _puts2(char *str)
 {
-char *name;
-void (*f)(vars_t *);
-} builtins_t;
+ssize_t num, len;
 
-char **make_env(char **env);
-void free_env(char **env);
+num = _strlen(str);
+len = write(STDERR_FILENO, str, num);
+if (len != num)
+{
+perror("Fatal Error");
+exit(1);
+}
 
-ssize_t _puts(char *str);
-char *_strdup(char *strtodup);
-int _strcmpr(char *strcmp1, char *strcmp2);
-char *_strcat(char *strc1, char *strc2);
-unsigned int _strlen(char *str);
+}
+/**
+ * _uitoa - converts an unsigned int to a string
+ * @count: unsigned int to convert
+ *
+ * Return: pointer to the converted string
+ */
+char *_uitoa(unsigned int count)
+{
+char *numstr;
+unsigned int tmp, digits;
 
-char **tokenize(char *buffer, char *delimiter);
-char **_realloc(char **ptr, size_t *size);
-char *new_strtok(char *str, const char *delim);
-
-void (*check_for_builtins(vars_t *vars))(vars_t *vars);
-void new_exit(vars_t *vars);
-void _env(vars_t *vars);
-void new_setenv(vars_t *vars);
-void new_unsetenv(vars_t *vars);
-
-void add_key(vars_t *vars);
-char **find_key(char **env, char *key);
-char *add_value(char *key, char *value);
-int _atoi(char *str);
-
-void check_for_path(vars_t *vars);
-int path_execute(char *command, vars_t *vars);
-char *find_path(char **env);
-int execute_cwd(vars_t *vars);
-int check_for_dir(char *str);
-
-void print_error(vars_t *vars, char *msg);
-void _puts2(char *str);
-char *_uitoa(unsigned int count);
-
-
-
-#endif /* _SHELL_H_ */
+tmp = count;
+for (digits = 0; tmp != 0; digits++)
+tmp /= 10;
+numstr = malloc(sizeof(char) * (digits + 1));
+if (numstr == NULL)
+{
+perror("Fatal Error1");
+exit(127);
+}
+numstr[digits] = '\0';
+for (--digits; count; --digits)
+{
+numstr[digits] = (count % 10) + '0';
+count /= 10;
+}
+return (numstr);
+}
