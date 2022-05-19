@@ -12,7 +12,7 @@ unsigned int sig_flag;
 static void sig_handler(int uuv)
 {
 (void) uuv;
-if (sig_flag == 0)
+if (s_flag == 0)
 _puts("\n$ ");
 else
 _puts("\n");
@@ -25,8 +25,7 @@ _puts("\n");
  * @environment: array of environment variables
  *
  * Return: 0 or exit status, or ?
- *
- *        */
+ */
 
 int main(int argc __attribute__((unused)), char **argv, char **environment)
 
