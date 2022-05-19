@@ -30,6 +30,7 @@ char **env;
 size_t count;
 char **argv;
 int status;
+unsigned int sig_flag;       
 char **commands;
 } vars_t;
 
@@ -77,6 +78,6 @@ int check_for_dir(char *str);
 void print_error(vars_t *vars, char *msg);
 void _puts2(char *str);
 char *_uitoa(unsigned int count);
-unsigned int sig_flag;
+
 
 #endif /* _SHELL_H_ */
