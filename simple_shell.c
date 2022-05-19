@@ -22,12 +22,9 @@ _puts("\n");
  * main - main function for the shell
  * @argc: number of arguments passed to main
  * @argv: array of arguments passed to main
+ * @environment: array of environment variables
  *
- *     * @environment: array of environment variables
- *
- *      *
- *
- *       * Return: 0 or exit status, or ?
+ * Return: 0 or exit status, or ?
  *
  *        */
 

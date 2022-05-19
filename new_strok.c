@@ -58,7 +58,7 @@ next_token = NULL;
 else
 {
 next_token[i] = '\0';
-next_token = next_token + i + 1;												    if  (*next_token == '\0')
+next_token = next_token + i + 1;				                if  (*next_token == '\0')
 next_token = NULL;
 }
 return (token_start);

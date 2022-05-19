@@ -20,17 +20,14 @@ return (-1);
 return (len);
 }
 
-
 /**
- *_strdup - returns pointer to new mem alloc space copy
+ * _strdup - returns pointer to new mem alloc space which contains copy
  * @strtodup: string to be duplicated
- *
  * Return: a pointer to the new duplicated string
  */
 char *_strdup(char *strtodup)
 {
 char *copy;
-
 
 int len, i;
 
@@ -62,10 +59,14 @@ while (strcmp1[i] == strcmp2[i])
 {
 if (strcmp1[i] == '\0')
 return (0);
+
 i++;
 }
 return (strcmp1[i] - strcmp2[i]);
+
 }
+
+
 
 /**
  * _strcat - concatenates two strings
@@ -117,6 +118,7 @@ unsigned int _strlen(char *str)
 unsigned int len;
 
 len = 0;
+
 
 for (len = 0; str[len]; len++)
 ;
