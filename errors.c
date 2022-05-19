@@ -23,15 +23,8 @@ if (msg)
 _puts2(msg);
 }
 else
-<<<<<<< HEAD
 perror("");
 }
-=======
-{
-perror("");
-}
-}
->>>>>>> 8444be5eec5df5981b8ac9df833799d50176e5b9
 
 /**
  * _puts2 - prints a string to standard error
@@ -50,10 +43,7 @@ if (len != num)
 perror("Fatal Error");
 exit(1);
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8444be5eec5df5981b8ac9df833799d50176e5b9
 }
 
 /**
@@ -69,13 +59,7 @@ unsigned int tmp, digits;
 
 tmp = count;
 for (digits = 0; tmp != 0; digits++)
-<<<<<<< HEAD
 tmp /= 10;
-=======
-{
-tmp /= 10;
-}
->>>>>>> 8444be5eec5df5981b8ac9df833799d50176e5b9
 numstr = malloc(sizeof(char) * (digits + 1));
 if (numstr == NULL)
 {
