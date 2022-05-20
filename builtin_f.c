@@ -1,4 +1,4 @@
-#include "main_head.h"
+#include "main_main.h"
 
 /**
  * exit_shell - function exits the shell with/without an exit value
