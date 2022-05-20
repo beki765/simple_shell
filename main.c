@@ -25,7 +25,7 @@ char *bet = ": ";
 _puts(av[0], 2);
 _puts(bet, 2);
 _puts("0: ", 2);
-puts("Can't open ", 2);
+_puts("Can't open ", 2);
 _puts(av[1], 2);
 _puts("\n", 2);
 exit(127);

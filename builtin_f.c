@@ -1,4 +1,4 @@
-#include "main_main.h"
+#include "shell_main.h"
 
 /**
  * exit_shell - function exits the shell with/without an exit value
@@ -35,7 +35,7 @@ return;
 else
 status = build->last_return;
 /* free all arrays and lists before exiting */
-ree_list(build->env);
+free_list(build->env);
 free_array(build->env_s);
 free_array(build->args);
 free_list(build->args_l);

@@ -18,7 +18,7 @@ len1 = _strlen(var);
 len2 = _strlen(val);
 str = malloc(sizeof(char) * (len1 + len2 + 2));
 _memcpy(str, var, len1);
-memcpy(str + len1, "=", 1);
+_memcpy(str + len1, "=", 1);
 _memcpy(str + len1 + 1, val, len2 + 1);
 if (!add_node(env, str))
 {
